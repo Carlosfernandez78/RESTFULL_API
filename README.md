@@ -49,16 +49,12 @@ node index.js
 ## Estructura del proyecto
 
 RESTFull_API/
-├── controllers/ 
-│      │
-│      └── mainController.js 
-├── routes/ 
-│      │
-│      └── mainRoutes.js 
-├── index.js 
-├── package.json
-├── package-lock.json
-└── .gitignore
+* controllers/ mainController.js 
+* routes/ mainRoutes.js 
+* index.js 
+* package.json
+* package-lock.json
+* .gitignore
 
 ## Notas finales
 
