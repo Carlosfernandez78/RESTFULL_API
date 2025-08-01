@@ -2,11 +2,25 @@
 import express from 'express';
 
 // 2. Inicializar la app
+const express = require('express');
 const app = express();
 
+// Middleware global
+app.use(express.json());
+
+// Importar rutas
+const libroRoutes = require('./src/routes/libro.routes');
+const usuarioRoutes = require('./src/routes/usuario.routes');
+const prestamoRoutes = require('./src/routes/prestamo.routes');
+const resenaRoutes = require('./src/routes/resena.routes');
+// Usar rutas
+app.use('/libros', libroRoutes);
+app.use('/usuarios', usuarioRoutes);
+app.use('/prestamos', prestamoRoutes);
+app.use('/resenas', resenaRoutes);
 // 3. Crear una ruta GET para la raíz
 app.get('/', (req, res) => {
-  res.send('Servidor Express funcionando 👌');
+  res.send('Servidor Express funcionando ');
 });
 
 /* 4. Configurar el puerto y escuchar
