@@ -1,5 +1,5 @@
 // 1. Importar Express
-import express from 'express';
+//import express from 'express';
 
 // 2. Inicializar la app
 const express = require('express');
