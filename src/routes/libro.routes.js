@@ -1,9 +1,10 @@
 // ejemplo en libro.routes.js
-const express = require('express');
+import express from 'express';
+import { getLibros, createLibro } from '../controller/libro.controller.js';
+
 const router = express.Router();
-const { getLibros, createLibro } = require('../controller/libro.controller');
 
 router.get('/', getLibros);
 router.post('/', createLibro);
 
-module.exports = router;
+export default router;

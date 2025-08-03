@@ -1,12 +1,24 @@
-const express = require('express');
+import express from 'express';
+import {
+  obtenerUsuarios,
+  obtenerUsuarioPorId,
+  actualizarUsuario,
+  eliminarUsuario,
+  crearUsuario
+} from '../controller/usuario.controller.js';
+import { validarCreacionUsuario } from '../validaciones/usuario.validacion.js';
+import { validarUsuarioPorId } from '../validaciones/usuario.validacion.js';
+import { validarCampos } from '../middleware/validarCampos.js'
+import { validarUsuario } from '../middleware/usuario.middleware.js';
+
 const router = express.Router();
-const usuarioController = require('../controller/usuario.controller');
 
 // Métodos HTTP para usuarios
-router.get('/', usuarioController.obtenerUsuarios);
-router.get('/:id', usuarioController.obtenerUsuarioPorId);
-router.post('/', usuarioController.crearUsuario);
-router.put('/:id', usuarioController.actualizarUsuario);
-router.delete('/:id', usuarioController.eliminarUsuario);
+router.get('/', obtenerUsuarios);
+router.get('/:id', validarCreacionUsuario, validarUsuarioPorId, validarCampos, obtenerUsuarioPorId);
+router.post('/', validarUsuario, crearUsuario );
+router.put('/:id', actualizarUsuario);
+router.delete('/:id', eliminarUsuario);
 
-module.exports = router;
+export default router;
+

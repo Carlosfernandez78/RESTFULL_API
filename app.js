@@ -9,15 +9,15 @@ const app = express();
 app.use(express.json());
 
 // Importar rutas
-const libroRoutes = require('./src/routes/libro.routes');
-const usuarioRoutes = require('./src/routes/usuario.routes');
-const prestamoRoutes = require('./src/routes/prestamo.routes');
-const resenaRoutes = require('./src/routes/resena.routes');
+import libroroutes from './src/routes/libro.routes.js';
+import usuarioroutes from './src/routes/usuario.routes.js';
+import prestamoroutes from './src/routes/prestamo.routes.js';
+import resenaroutes from './src/routes/resena.routes.js';
 // Usar rutas
-app.use('/libros', libroRoutes);
-app.use('/usuarios', usuarioRoutes);
-app.use('/prestamos', prestamoRoutes);
-app.use('/resenas', resenaRoutes);
+app.use('/libros', libroroutes);
+app.use('/usuarios', usuarioroutes);
+app.use('/prestamos', prestamoroutes);
+app.use('/resenas', resenaroutes);
 // 3. Crear una ruta GET para la raíz
 app.get('/', (req, res) => {
   res.send('Servidor Express funcionando ');
@@ -73,3 +73,10 @@ app.get('/prestamos/libro/:id_libro', (req, res) => res.send('Préstamos por lib
 app.listen(8080, () => {
   console.log('Servidor escuchando en http://localhost:8080');
 });
+
+import db from './src/config/db.js';
+
+db.query('SELECT 1')
+  .then(() => console.log('✅ Conexión a MySQL exitosa'))
+  .catch((err) => console.error('❌ Error de conexión:', err));
+export default app; // Exportar la instancia de Express para pruebas
